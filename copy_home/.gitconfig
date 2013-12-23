@@ -1,0 +1,44 @@
+[user]
+	name = Jose Luis Estebanez @jlestebanez
+	email = contacto@jlestebanez.com
+[alias]
+	co = checkout
+	ci = commit
+	st = status -sb
+	ac = !git add -A && git commit
+	acm = !git add -A && git commit -m
+	newtask = "!sh -c 'git co -b TAREA-$1 release' -"
+	pp = !git pull --rebase && git push && git ls -n 5
+	
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches
+	ls = log --pretty=format:"%C(yellow)%hi\\ %Cgreen(%ar)\\ %Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --branches
+	ll = log --pretty=format:"%C(yellow)%h\\ %Cgreen(%ar)\\ %Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat --branches
+	lsd = log --pretty=format:"%C(yellow)%h\\ %Cgreen(%ar)\\ %Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate  --cherry-pick --left-right --oneline
+	in =  log --pretty=format:"%C(yellow)%hi\\ %Cgreen(%ar)\\ %Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate ..@{u}
+	out = log --pretty=format:"%C(yellow)%hi\\ %Cgreen(%ar)\\ %Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate @{u}..
+	compare = log --pretty=format:"%C(yellow)%hi\\ %Cgreen(%ar)\\ %Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+
+[push]
+	default = upstream
+[color]
+	ui = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = cyan
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[core]
+	editor = vim
+[merge]
+	tool = meld
+  	summary = true
+[mergetool]
+	keepBackup = false
