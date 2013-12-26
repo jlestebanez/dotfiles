@@ -29,6 +29,8 @@ install brew-cask
 cask install dropbox
 cask install the-unarchiver
 cask install moom
+cask install virtualbox
+cask install sublime-text
 
 # Remove outdated versions from the cellar
 cleanup
