@@ -28,34 +28,6 @@ function cp_p () {
   rsync -WavP --human-readable --progress $1 $2
 }
 
-# Syntax-highlight JSON strings or files
-function json() {
-        if [ -p /dev/stdin ]; then
-                # piping, e.g. `echo '{"foo":42}' | json`
-                python -mjson.tool | pygmentize -l javascript
-        else
-                # e.g. `json '{"foo":42}'`
-                python -mjson.tool <<< "$*" | pygmentize -l javascript
-        fi
-}
-
-# All the dig info
-function digga() {
-        dig +nocmd "$1" any +multiline +noall +answer
-}
-
-# Escape UTF-8 characters into their 3-byte format
-function escape() {
-        printf "\\\x%s" $(printf "$@" | xxd -p -c1 -u)
-        echo # newline
-}
-
-# Decode \x{ABCD}-style Unicode escape sequences
-function unidecode() {
-        perl -e "binmode(STDOUT, ':utf8'); print \"$@\""
-        echo # newline
-}
-
 # Extract archives - use: extract <file>
 # Based on http://dotfiles.org/~pseup/.bashrc
 function extract() {
