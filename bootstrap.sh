@@ -4,6 +4,7 @@ git pull origin master
 function copy() {
 	rsync  -av --no-perms shell/ ~
 	rsync  -av --no-perms git/ ~
+	rsync  -av --no-perms ruby/ ~
 }
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
 	copy
