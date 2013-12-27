@@ -2,7 +2,8 @@
 cd "$(dirname "${BASH_SOURCE}")"
 git pull origin master
 function copy() {
-	rsync  -av --no-perms copy_home/ ~
+	rsync  -av --no-perms shell/ ~
+	rsync  -av --no-perms git/ ~
 }
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
 	copy
