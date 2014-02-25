@@ -9,19 +9,19 @@
 	acm = !git add -A && git commit -m
 	pp = !git pull --rebase && git push && git ls -n 5
 	
-	# LOG
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches
-	ls = log --pretty=format:"%C(yellow)%hi\\ %Cgreen(%ar)\\ %Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --branches
+	lg2 = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches
+	lg = log --pretty=format:"%C(yellow)%h\\ %Cgreen(%ar)\\ %Cred%d\\ %Creset%s%Cblue\\ [%cn]%n" --graph --abbrev-commit --date=relative --branches
 	ll = log --pretty=format:"%C(yellow)%h\\ %Cgreen(%ar)\\ %Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat --branches
-	lsd = log --pretty=format:"%C(yellow)%h\\ %Cgreen(%ar)\\ %Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate  --cherry-pick --left-right --oneline
-	in =  log --pretty=format:"%C(yellow)%hi\\ %Cgreen(%ar)\\ %Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate ..@{u}
-	out = log --pretty=format:"%C(yellow)%hi\\ %Cgreen(%ar)\\ %Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate @{u}..
-	compare = log --pretty=format:"%C(yellow)%hi\\ %Cgreen(%ar)\\ %Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
-	
+	ls = log --pretty=format:"%C(yellow)%h\\ %Cgreen(%ar)\\ %Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate  --cherry-pick --left-right --branches
+	in =  log --pretty=format:"%C(yellow)%h\\ %Cgreen(%ar)\\ %Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate ..@{u}
+	out = log --pretty=format:"%C(yellow)%h\\ %Cgreen(%ar)\\ %Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate @{u}..
+	compare = log --pretty=format:"%C(yellow)%h\\ %Cgreen(%ar)\\ %Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
 	# PUNSSET
-	newtask = "!sh -c 'git co -b TAREA-$1 release' -"
-	update-all= !git checkout release && git pull --rebase && git checkout master && git pull --rebase
-	add-to-test = "!sh -c 'git co test && git cherry-pick TAREA-$1 && git branch -m TAREA-$1 T-TAREA-$1' -"
+	punsset-new-task = "!sh -c 'git co -b TAREA-$1 release' -"
+	punsset-update-all= !git checkout release && git pull --rebase && git checkout master && git pull --rebase
+	punsset-add-task-to-test = "!sh -c 'git co test && git cherry-pick TAREA-$1 && git branch -m TAREA-$1 T-TAREA-$1 && git ls -n 3' -"
+	punsset-publish-task = "!sh -c 'git co release && git pull --rebase && git cherry-pick T-TAREA-$1 && git branch -m T-TAREA-$1 PP-TAREA-$1 && git push && git ls -n 3' -"
+	punsset-close-task = "!sh -c 'git branch -D PP-TAREA-$1' -"
 
 [push]
 	default = upstream
