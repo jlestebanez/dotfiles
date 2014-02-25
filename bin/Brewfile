@@ -18,6 +18,9 @@ install bash
 install wget --enable-iri
 # Install more recent versions of some OS X tools
 install vim --override-system-vi
+
+# Install tmux
+install tmux
 # Install other useful binaries
 install git
 tap homebrew/dupes
