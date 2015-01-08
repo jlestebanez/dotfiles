@@ -1,39 +1,51 @@
 # TODO: Check brew install
-# Run brew bundle Brewfile
 
 # Make sure we’re using the latest Homebrew
-update
+brew update
 
 # Upgrade any already-installed formulae
-upgrade
+brew upgrade
 
 # Install GNU core utilities (those that come with OS X are outdated)
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
-install coreutils
+brew install coreutils
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
-install findutils
+brew install findutils
 # Install Bash 4
-install bash
+brew install bash
 # Install wget with IRI support
-install wget --enable-iri
+brew install wget --enable-iri
 # Install more recent versions of some OS X tools
-install vim --override-system-vi
-
+brew install vim --override-system-vi
 # Install tmux
-install tmux
+brew install tmux
 # Install other useful binaries
-install git
+brew install git
 tap homebrew/dupes
-install homebrew/dupes/grep
+brew install homebrew/dupes/grep
+brew install bash-completition
 
 #brew cask
 tap phinze/homebrew-cask
-install brew-cask
-cask install dropbox
-cask install the-unarchiver
-cask install moom
-cask install virtualbox
-cask install sublime-text
+brew install brew-cask
+brew tap caskroom/versions
+brew cask install dropbox
+brew cask install the-unarchiver
+brew cask install moom
+brew cask install virtualbox
+brew cask install google-chrome
+brew cask install sublime-text3
+brew cask install vagrant
+brew cask install spotify
+brew cask install mou
+brew cask install vagrant-manager
+brew cask install appcleaner
+brew cask install pgadmin3
+brew cask install skype
+brew cask install joinme
+brew cask install vox
+
+
 
 # Remove outdated versions from the cellar
-cleanup
+brew cleanup

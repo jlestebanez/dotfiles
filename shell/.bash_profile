@@ -4,9 +4,6 @@ for file in ~/.{bash_extra,bash_prompt,bash_exports,bash_aliases,bash_functions}
 done
 unset file
 
-# init rvm
-source ~/.rvm/scripts/rvm
-
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
 
@@ -30,4 +27,8 @@ if ! shopt -oq posix; then
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
+fi
+
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
 fi

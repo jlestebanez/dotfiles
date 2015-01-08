@@ -1,17 +1,19 @@
 # ~/.bash_extra can be used for settings you don’t want to commit
 cdp () {
- cd /home/joseluis/Development/git/$1
+ cd /Users/joseluis/Development/proyectos/$1
 }
-
-_cdp()
+_cdp ()
 {
-   local cur prev dirs
-    cur="${COMP_WORDS[COMP_CWORD]}"
-    prev="${COMP_WORDS[COMP_CWORD-1]}"
-   pushd "/home/joseluis/Development/git/">/dev/null
-   _filedir
-   popd >/dev/null
-   return 0
-}
-complete -o nospace -F _cdp cdp
-complete -o nospace -F _git g
+    local cur
+    COMPREPLY=()
+    cur=${COMP_WORDS[COMP_CWORD]}
+    case "$cur" in
+        *)
+            pushd "/Users/joseluis/Development/proyectos/">/dev/null
+            COMPREPLY=( $(compgen -d $cur) )
+            ;;
+    esac
+
+    return 0
+} &&
+complete -o filenames -F _cdp cdp
